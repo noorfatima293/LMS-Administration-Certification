@@ -20,11 +20,36 @@ main {
     width: 90%;
     max-width: 1000px;
     margin: 30px auto;
-    background-color: white;
-    padding: 25px;
-    border-radius: 8px;
 }
 
-h2 {
+main h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modules {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.module {
+    background-color: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.module h3 {
     margin-top: 0;
+}
+
+.module button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
