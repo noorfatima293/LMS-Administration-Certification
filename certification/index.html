@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate Developer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Certificate Developer</h1>
+        <p>LMS Ecosystem</p>
+      </div>
+
+      <nav>
+        <button class="nav-item" data-page="certificates">Certificates</button>
+        <button class="nav-item active" data-page="issue">Issue</button>
+        <button class="nav-item" data-page="templates">Templates</button>
+        <button class="nav-item" data-page="activity">Activity</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <!-- Certificates -->
+      <section class="page" id="certificates-page">
+        <div class="page-heading">
+          <h2>Certificates</h2>
+          <p>View and manage issued certificates.</p>
+        </div>
+
+        <div class="content-card">
+          <div class="toolbar">
+            <input id="certificateSearch" class="search" type="text" placeholder="Search certificate...">
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Certificate ID</th>
+                  <th>Student</th>
+                  <th>Course</th>
+                  <th>Date</th>
+                  <th>Template</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="certificateTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Issue -->
+      <section class="page active-page" id="issue-page">
+        <div class="page-heading">
+          <h2>Issue certificates</h2>
+          <p>Create one certificate or import many from the LMS.</p>
+        </div>
+
+        <div class="issue-layout">
+          <div class="form-card">
+            <div class="form-grid">
+              <div class="field">
+                <label for="studentName">Student name</label>
+                <input id="studentName" type="text" placeholder="">
+              </div>
+
+              <div class="field">
+                <label for="studentEmail">Email</label>
+                <input id="studentEmail" type="email" placeholder="">
+              </div>
+
+              <div class="field">
+                <label for="courseName">Course</label>
+                <input id="courseName" type="text" placeholder="">
+              </div>
+
+              <div class="field">
+                <label for="completionDate">Completion date</label>
+                <input id="completionDate" type="date">
+              </div>
+
+              <div class="field">
+                <label for="grade">Grade / score</label>
+                <input id="grade" type="text" placeholder="">
+              </div>
+
+              <div class="field">
+                <label for="issueTemplate">Template</label>
+                <select id="issueTemplate"></select>
+              </div>
+            </div>
+
+            <label class="checkbox-row">
+              <input id="issueNow" type="checkbox">
+              <span>Issue right away</span>
+            </label>
+
+            <button class="primary-btn" id="createCertificate">Create certificate</button>
+            <p class="form-message" id="issueMessage"></p>
+          </div>
+
+          <div class="preview-card">
+            <div id="certificatePreview" class="certificate">
+              <div class="certificate-border">
+                <div class="certificate-inner">
+                  <div class="certificate-org" id="previewOrg">NORTHFIELD INSTITUTE</div>
+                  <h3 id="previewTitle">Certificate of Completion</h3>
+                  <div class="certificate-intro">This is to certify that</div>
+                  <div class="student-preview" id="previewStudent">Student Name</div>
+                  <div class="student-line"></div>
+                  <p class="certificate-body" id="previewBody">
+                    has successfully completed the course Course Name on 2026-09-29 and achieved grade -.
+                  </p>
+
+                  <div class="certificate-footer">
+                    <div class="signature-block">
+                      <div class="signature-line"></div>
+                      <span id="previewSigner">Director of Learning</span>
+                    </div>
+
+                    <div class="certificate-meta">
+                      <div>ID <span id="previewId">CERT-PREVIEW</span></div>
+                      <div>Date <span id="previewDate">2026-09-29</span></div>
+                      <div>Template <span id="previewVersion">v1</span></div>
+                    </div>
+
+                    <div class="qr-area">
+                      <div id="qrCode"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Templates -->
+      <section class="page" id="templates-page">
+        <div class="page-heading">
+          <h2>Templates</h2>
+          <p>Design a template. Each save creates a new version.</p>
+        </div>
+
+        <div class="template-tabs" id="templateTabs"></div>
+
+        <div class="template-layout">
+          <div class="form-card template-form">
+            <div class="field">
+              <label for="templateName">Template name</label>
+              <input id="templateName" type="text">
+            </div>
+
+            <div class="field">
+              <label for="organization">Organization</label>
+              <input id="organization" type="text">
+            </div>
+
+            <div class="field">
+              <label for="templateTitle">Title</label>
+              <input id="templateTitle" type="text">
+            </div>
+
+            <div class="field">
+              <label for="templateBody">Body (fields: {{name}} {{course}} {{date}} {{grade}} {{id}} {{org}})</label>
+              <textarea id="templateBody"></textarea>
+            </div>
+
+            <div class="two-columns">
+              <div class="field">
+                <label for="signer">Signer</label>
+                <input id="signer" type="text">
+              </div>
+
+              <div class="field">
+                <label for="fontFamily">Font</label>
+                <select id="fontFamily">
+                  <option value="Georgia">Georgia</option>
+                  <option value="Playfair Display">Playfair Display</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Arial">Arial</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="two-columns">
+              <div class="field">
+                <label for="accentColor">Accent color</label>
+                <input id="accentColor" class="color-input" type="color">
+              </div>
+
+              <div class="field">
+                <label for="borderColor">Border color</label>
+                <input id="borderColor" class="color-input" type="color">
+              </div>
+            </div>
+
+            <div class="two-columns">
+              <div class="field">
+                <label for="logoFile">Logo</label>
+                <input id="logoFile" type="file" accept="image/*">
+              </div>
+
+              <div class="field">
+                <label for="signatureFile">Signature</label>
+                <input id="signatureFile" type="file" accept="image/*">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="verificationUrl">Verification URL base (used in QR)</label>
+              <input id="verificationUrl" type="url">
+            </div>
+
+            <button class="primary-btn" id="saveTemplate">Save as new version</button>
+            <p class="form-message" id="templateMessage"></p>
+          </div>
+
+          <div class="preview-card template-preview-card">
+            <div id="templatePreview" class="certificate">
+              <div class="certificate-border">
+                <div class="certificate-inner">
+                  <div class="certificate-org" id="templatePreviewOrg">NORTHFIELD INSTITUTE</div>
+                  <img id="templateLogo" class="template-logo hidden" alt="Logo">
+                  <h3 id="templatePreviewTitle">Certificate of Completion</h3>
+                  <div class="certificate-intro">This is to certify that</div>
+                  <div class="student-preview">Aisha Khan</div>
+                  <div class="student-line"></div>
+                  <p class="certificate-body" id="templatePreviewBody">
+                    has successfully completed the course Data Analytics 101 on 2026-09-29 and achieved grade A.
+                  </p>
+
+                  <div class="certificate-footer">
+                    <div class="signature-block">
+                      <img id="signaturePreview" class="signature-image hidden" alt="Signature">
+                      <div class="signature-line"></div>
+                      <span id="templatePreviewSigner">Director of Learning</span>
+                    </div>
+
+                    <div class="certificate-meta">
+                      <div>ID CERT-SAMPLE</div>
+                      <div>Date 2026-09-29</div>
+                      <div id="templatePreviewVersion">Template v1</div>
+                    </div>
+
+                    <div class="qr-area">
+                      <div id="templateQrCode"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activity -->
+      <section class="page" id="activity-page">
+        <div class="page-heading">
+          <h2>Activity</h2>
+          <p>Recent certificate and template activity.</p>
+        </div>
+
+        <div class="content-card">
+          <div id="activityList" class="activity-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
