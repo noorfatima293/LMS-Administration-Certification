@@ -3,23 +3,790 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications</title>
+    <title>PulseLMS | Communication Workspace</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="notification-box">
-        <h1>Notifications</h1>
+    <!-- Background -->
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
 
-        <div id="notificationList">
-            <p>No new notifications.</p>
+    <!-- NAVBAR -->
+    <header class="topbar">
+
+        <a href="#" class="brand">
+            <span class="brand-mark">✦</span>
+            <span>Pulse<span>LMS</span></span>
+        </a>
+
+        <nav>
+            <a href="#notifications" class="active">
+                Notifications <b id="navBadge">5</b>
+            </a>
+            <a href="#messages">Messages</a>
+            <a href="#announcements">Announcements</a>
+            <a href="#events">Events</a>
+        </nav>
+
+        <button class="profile" id="profileBtn">
+            <span>KA</span>
+
+            <div>
+                <strong>Kashaf</strong>
+                <small>Student</small>
+            </div>
+
+            ⌄
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-copy reveal">
+
+                <div class="eyebrow">
+                    ✦ COMMUNICATION WORKSPACE
+                </div>
+
+                <h1>
+                    Stay Connected.<br>
+                    <em>Stay Informed.</em>
+                </h1>
+
+                <p>
+                    Everything your learning community needs to communicate,
+                    collaborate and stay updated — all in one place.
+                </p>
+
+                <div class="hero-actions">
+
+                    <button class="btn primary" id="viewNotifications">
+                        View Notifications <span>→</span>
+                    </button>
+
+                    <button class="btn ghost" id="sendAnnouncement">
+                        ＋ Send Announcement
+                    </button>
+
+                </div>
+
+                <div class="hero-meta">
+                    <span class="live-dot"></span>
+                    All systems operational
+                    <i></i>
+                    Last synced just now
+                </div>
+
+            </div>
+
+
+            <!-- HERO ILLUSTRATION -->
+            <div class="hero-art reveal delay-2">
+
+                <div class="orbit orbit-a"></div>
+                <div class="orbit orbit-b"></div>
+
+                <div class="float-card mini-card card-a">
+
+                    <span class="icon purple">⌁</span>
+
+                    <div>
+                        <b>New Message</b>
+                        <small>From Dr. Ayesha</small>
+                    </div>
+
+                </div>
+
+
+                <div class="float-card mini-card card-b">
+
+                    <span class="icon gold">✓</span>
+
+                    <div>
+                        <b>Assignment Updated</b>
+                        <small>Web Engineering</small>
+                    </div>
+
+                </div>
+
+
+                <div class="phone">
+
+                    <div class="phone-top">
+                        <span></span>
+                        <b>Notifications</b>
+                        <span>•••</span>
+                    </div>
+
+                    <div class="phone-badge">5</div>
+
+
+                    <div class="phone-row">
+
+                        <span class="avatar lavender">A</span>
+
+                        <div>
+                            <b>New Announcement</b>
+                            <small>Semester schedule is live</small>
+                        </div>
+
+                        <time>2m</time>
+
+                    </div>
+
+
+                    <div class="phone-row unread">
+
+                        <span class="avatar violet">⌁</span>
+
+                        <div>
+                            <b>Class Reminder</b>
+                            <small>OOP lecture starts soon</small>
+                        </div>
+
+                        <time>18m</time>
+
+                    </div>
+
+
+                    <div class="phone-row">
+
+                        <span class="avatar peach">!</span>
+
+                        <div>
+                            <b>Exam Schedule</b>
+                            <small>Midterm dates published</small>
+                        </div>
+
+                        <time>1h</time>
+
+                    </div>
+
+
+                    <div class="phone-footer">
+                        ● 5 new updates today
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WORKSPACE -->
+        <section class="workspace">
+
+
+            <!-- NOTIFICATION CENTER -->
+            <div class="window notifications reveal" id="notifications">
+
+                <div class="window-bar">
+
+                    <div class="window-title">
+
+                        <span class="window-icon">♢</span>
+
+                        <div>
+                            <b>Notification Center</b>
+                            <small>Your latest updates</small>
+                        </div>
+
+                    </div>
+
+                    <div class="window-controls">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                </div>
+
+
+                <div class="window-content">
+
+                    <div class="section-head">
+
+                        <div>
+                            <span class="eyebrow">INBOX</span>
+
+                            <h2>
+                                Recent notifications
+                                <span id="unreadCount">5</span>
+                            </h2>
+                        </div>
+
+                        <button class="text-btn" id="markAll">
+                            Mark all as read
+                        </button>
+
+                    </div>
+
+
+                    <div class="filters">
+
+                        <button class="filter active" data-filter="all">
+                            All
+                        </button>
+
+                        <button class="filter" data-filter="academic">
+                            Academic
+                        </button>
+
+                        <button class="filter" data-filter="announcement">
+                            Announcements
+                        </button>
+
+                        <button class="filter" data-filter="system">
+                            System
+                        </button>
+
+                    </div>
+
+
+                    <div id="notificationList"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIDE WINDOWS -->
+            <div class="side-stack">
+
+
+                <!-- ACTIVITY -->
+                <div class="window activity reveal delay-1">
+
+                    <div class="window-bar">
+
+                        <div class="window-title">
+
+                            <span class="window-icon">◌</span>
+
+                            <div>
+                                <b>Communication Activity</b>
+                                <small>This week</small>
+                            </div>
+
+                        </div>
+
+                        <div class="window-controls">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-body">
+
+                        <div class="activity-number">
+
+                            <strong>84</strong>
+
+                            <span>total interactions</span>
+
+                            <b>+18%</b>
+
+                        </div>
+
+
+                        <div class="bars">
+                            <i style="height:42%"></i>
+                            <i style="height:65%"></i>
+                            <i style="height:52%"></i>
+                            <i style="height:78%"></i>
+                            <i style="height:60%"></i>
+                            <i style="height:91%"></i>
+                            <i style="height:70%"></i>
+                        </div>
+
+
+                        <div class="days">
+                            <span>M</span>
+                            <span>T</span>
+                            <span>W</span>
+                            <span>T</span>
+                            <span>F</span>
+                            <span>S</span>
+                            <span>S</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMPORTANT UPDATE -->
+                <div class="window updates reveal delay-2">
+
+                    <div class="window-bar">
+
+                        <div class="window-title">
+
+                            <span class="window-icon">✦</span>
+
+                            <div>
+                                <b>Important Update</b>
+                                <small>From Administration</small>
+                            </div>
+
+                        </div>
+
+                        <div class="priority">
+                            HIGH
+                        </div>
+
+                    </div>
+
+
+                    <div class="update-body">
+
+                        <h3>
+                            Spring semester registration
+                        </h3>
+
+                        <p>
+                            Course registration closes Friday at 11:59 PM.
+                            Review your selections before submitting.
+                        </p>
+
+                        <button
+                            class="small-btn"
+                            data-modal="registration">
+                            Review details →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ANNOUNCEMENTS -->
+            <div class="window announcements reveal" id="announcements">
+
+                <div class="window-bar">
+
+                    <div class="window-title">
+
+                        <span class="window-icon">◈</span>
+
+                        <div>
+                            <b>Announcements</b>
+                            <small>From your learning community</small>
+                        </div>
+
+                    </div>
+
+                    <button class="round-btn">
+                        ＋
+                    </button>
+
+                </div>
+
+
+                <div class="announcement-grid">
+
+
+                    <article class="announcement-card">
+
+                        <div class="ann-top">
+
+                            <span class="tag high">
+                                Important
+                            </span>
+
+                            <time>
+                                Today · 10:30 AM
+                            </time>
+
+                        </div>
+
+
+                        <h3>
+                            Midterm examination schedule published
+                        </h3>
+
+
+                        <p>
+                            The complete midterm timetable is now available.
+                            Please check your courses and plan accordingly.
+                        </p>
+
+
+                        <div class="author">
+
+                            <span class="avatar violet">
+                                SA
+                            </span>
+
+                            <div>
+                                <b>Student Affairs</b>
+                                <small>Academic Office</small>
+                            </div>
+
+                            <button
+                                class="read-more"
+                                data-modal="exam">
+                                Read more →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="announcement-card">
+
+                        <div class="ann-top">
+
+                            <span class="tag normal">
+                                General
+                            </span>
+
+                            <time>
+                                Yesterday
+                            </time>
+
+                        </div>
+
+
+                        <h3>
+                            Campus coding community meetup
+                        </h3>
+
+
+                        <p>
+                            Join fellow developers for an evening of projects,
+                            ideas and collaborative learning.
+                        </p>
+
+
+                        <div class="author">
+
+                            <span class="avatar lavender">
+                                CC
+                            </span>
+
+                            <div>
+                                <b>Coding Club</b>
+                                <small>Community Team</small>
+                            </div>
+
+                            <button
+                                class="read-more"
+                                data-modal="coding">
+                                Read more →
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+            <div class="window messages reveal delay-1" id="messages">
+
+                <div class="window-bar">
+
+                    <div class="window-title">
+
+                        <span class="window-icon">✉</span>
+
+                        <div>
+                            <b>Messages</b>
+                            <small>Direct communication</small>
+                        </div>
+
+                    </div>
+
+                    <div class="window-controls">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                </div>
+
+
+                <div class="message-layout">
+
+
+                    <aside class="conversation-list">
+
+                        <div class="search">
+
+                            <span>⌕</span>
+
+                            <input
+                                id="conversationSearch"
+                                placeholder="Search conversations">
+
+                        </div>
+
+                        <div id="conversations"></div>
+
+                    </aside>
+
+
+                    <section class="chat">
+
+                        <div class="chat-head">
+
+                            <span class="avatar violet">
+                                DA
+                            </span>
+
+                            <div>
+
+                                <b id="chatName">
+                                    Dr. Ayesha
+                                </b>
+
+                                <small>
+                                    <span class="online"></span>
+                                    Online
+                                </small>
+
+                            </div>
+
+                            <button>•••</button>
+
+                        </div>
+
+
+                        <div class="chat-body" id="chatBody">
+
+                            <div class="bubble received">
+
+                                Hi Kashaf! The updated project guidelines
+                                are now available. Please review them before
+                                the next session.
+
+                                <small>10:42 AM</small>
+
+                            </div>
+
+
+                            <div class="bubble sent">
+
+                                Sure, I’ll review them. Thank you!
+
+                                <small>10:44 AM</small>
+
+                            </div>
+
+
+                            <div class="bubble received">
+
+                                Perfect. Let me know if you have any questions.
+
+                                <small>10:45 AM</small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="message-input">
+
+                            <input
+                                id="messageInput"
+                                placeholder="Write a message...">
+
+                            <button id="sendMessage">
+                                ↑
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENTS -->
+            <div class="window events reveal" id="events">
+
+                <div class="window-bar">
+
+                    <div class="window-title">
+
+                        <span class="window-icon">◷</span>
+
+                        <div>
+                            <b>Events & Reminders</b>
+                            <small>Keep your schedule on track</small>
+                        </div>
+
+                    </div>
+
+                    <button class="text-btn">
+                        View calendar →
+                    </button>
+
+                </div>
+
+
+                <div class="timeline">
+
+
+                    <div class="event">
+
+                        <div class="date">
+                            <b>29</b>
+                            <small>SEP</small>
+                        </div>
+
+                        <div class="event-line"></div>
+
+                        <div class="event-info">
+
+                            <span class="tag purple-tag">
+                                CLASS
+                            </span>
+
+                            <h3>
+                                Object Oriented Programming
+                            </h3>
+
+                            <p>
+                                10:00 AM · Room C-204
+                            </p>
+
+                        </div>
+
+                        <span class="event-status">
+                            Tomorrow
+                        </span>
+
+                    </div>
+
+
+                    <div class="event">
+
+                        <div class="date">
+                            <b>01</b>
+                            <small>OCT</small>
+                        </div>
+
+                        <div class="event-line"></div>
+
+                        <div class="event-info">
+
+                            <span class="tag gold-tag">
+                                DEADLINE
+                            </span>
+
+                            <h3>
+                                Frontend LMS Project
+                            </h3>
+
+                            <p>
+                                11:59 PM · Submission Portal
+                            </p>
+
+                        </div>
+
+                        <span class="event-status">
+                            2 days
+                        </span>
+
+                    </div>
+
+
+                    <div class="event">
+
+                        <div class="date">
+                            <b>06</b>
+                            <small>OCT</small>
+                        </div>
+
+                        <div class="event-line"></div>
+
+                        <div class="event-info">
+
+                            <span class="tag pink-tag">
+                                EXAM
+                            </span>
+
+                            <h3>
+                                Digital Logic Design
+                            </h3>
+
+                            <p>
+                                9:00 AM · Examination Hall
+                            </p>
+
+                        </div>
+
+                        <span class="event-status">
+                            7 days
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        ✓
+        <span>Notification marked as read</span>
+    </div>
+
+
+    <!-- MODAL -->
+    <div class="modal-backdrop" id="modalBackdrop">
+
+        <div class="modal">
+
+            <button class="modal-close" id="modalClose">
+                ×
+            </button>
+
+            <span class="modal-label">
+                COMMUNICATION UPDATE
+            </span>
+
+            <h2 id="modalTitle">
+                Details
+            </h2>
+
+            <p id="modalText"></p>
+
+            <button class="btn primary" id="modalAction">
+                Got it
+            </button>
+
         </div>
 
-        <button onclick="showNotification()">
-            Check Notifications
-        </button>
     </div>
+
 
     <script src="script.js"></script>
 
