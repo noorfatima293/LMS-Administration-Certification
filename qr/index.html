@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Verification</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="qr-box">
+        <h1>QR Verification</h1>
+
+        <p>Enter the certificate ID to generate a QR verification code.</p>
+
+        <input type="text" id="certificateId" placeholder="Certificate ID">
+
+        <button onclick="generateQR()">Generate QR</button>
+
+        <div id="qrResult"></div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

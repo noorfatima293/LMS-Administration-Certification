@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.communication-box {
+    width: 90%;
+    max-width: 500px;
+    margin: 80px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.communication-box h1 {
+    text-align: center;
+}
+
+.communication-box input,
+.communication-box textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.communication-box textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.communication-box button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#result {
+    margin-top: 15px;
+    font-weight: bold;
+}
