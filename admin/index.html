@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Admin Panel</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">LMS Admin</div>
+
+        <nav class="menu">
+            <a class="active" onclick="showSection('dashboard', this)">Dashboard</a>
+            <a onclick="showSection('students', this)">Students</a>
+            <a onclick="showSection('courses', this)">Courses</a>
+            <a onclick="showSection('faculty', this)">Faculty</a>
+            <a onclick="showSection('quizzes', this)">Quizzes</a>
+            <a onclick="showSection('certificates', this)">Certificates</a>
+            <a onclick="showSection('announcements', this)">Announcements</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="admin-name">Administrator</div>
+        </div>
+
+        <!-- Dashboard -->
+        <section id="dashboard">
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>Total Students</h3>
+                    <p>1,248</p>
+                </div>
+
+                <div class="card">
+                    <h3>Total Courses</h3>
+                    <p>42</p>
+                </div>
+
+                <div class="card">
+                    <h3>Faculty Members</h3>
+                    <p>68</p>
+                </div>
+
+                <div class="card">
+                    <h3>Certificates</h3>
+                    <p>386</p>
+                </div>
+
+            </div>
+
+            <div class="section">
+
+                <div class="section-header">
+                    <h2>Recent Students</h2>
+
+                    <input
+                        type="text"
+                        class="search"
+                        id="studentSearch"
+                        placeholder="Search student..."
+                    >
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Course</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTable">
+
+                        <tr>
+                            <td>Noori Fatima</td>
+                            <td>noori@example.com</td>
+                            <td>Web Development</td>
+                            <td>
+                                <span class="status active-status">
+                                    Active
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Sonia Akram</td>
+                            <td>sonia@example.com</td>
+                            <td>Programming</td>
+                            <td>
+                                <span class="status active-status">
+                                    Active
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Kashaf Akram</td>
+                            <td>kashaf@example.com</td>
+                            <td>Database Systems</td>
+                            <td>
+                                <span class="status pending-status">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="section">
+
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                </div>
+
+                <div class="activity">
+                    <div class="activity-icon">✓</div>
+
+                    <div>
+                        <strong>New student registered</strong>
+                        <p>2 minutes ago</p>
+                    </div>
+                </div>
+
+                <div class="activity">
+                    <div class="activity-icon">📚</div>
+
+                    <div>
+                        <strong>New course added</strong>
+                        <p>35 minutes ago</p>
+                    </div>
+                </div>
+
+                <div class="activity">
+                    <div class="activity-icon">🎓</div>
+
+                    <div>
+                        <strong>Certificate issued</strong>
+                        <p>1 hour ago</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Students -->
+        <section id="students" class="section hidden">
+
+            <div class="section-header">
+                <h2>Student Management</h2>
+
+                <button class="btn" onclick="addStudent()">
+                    + Add Student
+                </button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Email</th>
+                        <th>Course</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Noori Fatima</td>
+                        <td>noori@example.com</td>
+                        <td>Web Development</td>
+                        <td>Active</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sonia Akram</td>
+                        <td>sonia@example.com</td>
+                        <td>Programming</td>
+                        <td>Active</td>
+                    </tr>
+
+                    <tr>
+                        <td>Kashaf Akram</td>
+                        <td>kashaf@example.com</td>
+                        <td>Database Systems</td>
+                        <td>Pending</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </section>
+
+        <!-- Courses -->
+        <section id="courses" class="section hidden">
+
+            <div class="section-header">
+                <h2>Course Management</h2>
+
+                <button class="btn" onclick="addCourse()">
+                    + Add Course
+                </button>
+            </div>
+
+            <div class="module-grid">
+
+                <div class="module">
+                    <h3>Web Development</h3>
+                    <p>
+                        HTML, CSS and JavaScript fundamentals.
+                    </p>
+                </div>
+
+                <div class="module">
+                    <h3>Programming Fundamentals</h3>
+                    <p>
+                        Programming concepts and problem solving.
+                    </p>
+                </div>
+
+                <div class="module">
+                    <h3>Database Systems</h3>
+                    <p>
+                        Database concepts, SQL and data management.
+                    </p>
+                </div>
+
+                <div class="module">
+                    <h3>Object Oriented Programming</h3>
+                    <p>
+                        Classes, objects, inheritance and polymorphism.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Faculty -->
+        <section id="faculty" class="section hidden">
+
+            <div class="section-header">
+                <h2>Faculty Management</h2>
+
+                <button class="btn" onclick="addFaculty()">
+                    + Add Faculty
+                </button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Courses</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Dr. Ahmed Khan</td>
+                        <td>Computer Science</td>
+                        <td>Programming</td>
+                        <td>Active</td>
+                    </tr>
+
+                    <tr>
+                        <td>Ms. Sana Malik</td>
+                        <td>Information Technology</td>
+                        <td>Web Development</td>
+                        <td>Active</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </section>
+
+        <!-- Quizzes -->
+        <section id="quizzes" class="section hidden">
+
+            <div class="section-header">
+                <h2>Quiz & Assessment Management</h2>
+
+                <button class="btn" onclick="addQuiz()">
+                    + Create Quiz
+                </button>
+            </div>
+
+            <div class="module-grid">
+
+                <div class="module">
+                    <h3>Programming Fundamentals Quiz</h3>
+                    <p>20 questions · 30 minutes</p>
+                </div>
+
+                <div class="module">
+                    <h3>Web Development Assessment</h3>
+                    <p>25 questions · 40 minutes</p>
+                </div>
+
+                <div class="module">
+                    <h3>OOP Assessment</h3>
+                    <p>15 questions · 25 minutes</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Certificates -->
+        <section id="certificates" class="section hidden">
+
+            <div class="section-header">
+                <h2>Certificate Management</h2>
+
+                <button class="btn" onclick="issueCertificate()">
+                    + Issue Certificate
+                </button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Course</th>
+                        <th>Issue Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Noori Fatima</td>
+                        <td>Web Development</td>
+                        <td>29 Sep 2026</td>
+                        <td>Issued</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sonia Akram</td>
+                        <td>Programming</td>
+                        <td>28 Sep 2026</td>
+                        <td>Issued</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </section>
+
+        <!-- Announcements -->
+        <section id="announcements" class="section hidden">
+
+            <div class="section-header">
+                <h2>Announcements</h2>
+
+                <button class="btn" onclick="newAnnouncement()">
+                    + New Announcement
+                </button>
+            </div>
+
+            <div class="module-grid">
+
+                <div class="module">
+                    <h3>Final Project Submission</h3>
+
+                    <p>
+                        Students should complete their assigned
+                        project modules before the final submission date.
+                    </p>
+                </div>
+
+                <div class="module">
+                    <h3>New Course Available</h3>
+
+                    <p>
+                        A new frontend development course is now
+                        available for students.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
